@@ -53,7 +53,7 @@ In [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) →
 | **Build** (Next/OpenNext build, SSG, `NEXT_PUBLIC_*` inlining) | [Workers Builds → Build variables and secrets](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-variables-and-secrets) |
 | **Runtime** (Worker at request time) | [Workers → Settings → Variables and Secrets](https://developers.cloudflare.com/workers/configuration/environment-variables/) |
 
-Set the same names you use in `.env` (e.g. `AEM_PUBLISH_URL`, `NEXT_PUBLIC_AEM_PUBLISH_URL`). Use **Secrets** for sensitive values (they cannot be read back from the dashboard). To avoid deployments removing existing vars: `opennextjs-cloudflare deploy -- --keep-vars`.
+Set the same names you use in `.env`: `AEM_PUBLISH_URL`, `AEM_AUTHOR_URL`, `AEM_PREVIEW_MODE`, etc. (see `.env.example` and `wrangler.jsonc`). Use **Secrets** for sensitive values (they cannot be read back from the dashboard). To avoid deployments removing existing vars: `opennextjs-cloudflare deploy -- --keep-vars`. If `AEM_PUBLISH_URL` is not set, the app renders fallback text instead of AEM content.
 
 Details: [OpenNext env vars (production)](https://opennext.js.org/cloudflare/howtos/env-vars#production).
 

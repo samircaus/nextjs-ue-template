@@ -11,14 +11,8 @@
   // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
   "vars": {
     "AEM_PUBLISH_URL": "",
-    "NEXT_PUBLIC_AEM_PUBLISH_URL": "",
     "AEM_AUTHOR_URL": "",
-    "NEXT_PUBLIC_AEM_AUTHOR_URL": "",
     "AEM_PREVIEW_MODE": "",
-    "NEXT_PUBLIC_AEM_PREVIEW_MODE": "",
-    "NEXT_PUBLIC_IMAGE_BASE_URL": "",
-    "NEXT_PUBLIC_AEM_UE_CONNECTION": "",
-    "AEM_DEBUG": "",
-    "NEXT_PUBLIC_AEM_DEBUG": ""
+    "AEM_DEBUG": ""
   }
 }

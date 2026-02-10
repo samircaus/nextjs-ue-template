@@ -45,7 +45,12 @@ export default async function Home() {
             </a>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {articles.slice(0, 4).map((article) => (
+            {articles.length === 0 ? (
+              <p className="col-span-full rounded-lg border border-zinc-200 bg-zinc-100 px-6 py-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                No content. Set <code className="rounded bg-zinc-200 px-1 py-0.5 font-mono dark:bg-zinc-800">AEM_PUBLISH_URL</code> to load from AEM.
+              </p>
+            ) : (
+              articles.slice(0, 4).map((article) => (
               <ArticleCard
                 key={article.slug}
                 title={article.title}
@@ -55,7 +60,8 @@ export default async function Home() {
                 profilePictureUrl={getImageUrl(article.authorFragment.profilePicture) ?? null}
                 aueResource={aueResource(article._path)}
               />
-            ))}
+              ))
+            )}
           </div>
         </section>
 
@@ -78,7 +84,12 @@ export default async function Home() {
             </a>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {adventures.slice(0, 4).map((adventure) => (
+            {adventures.length === 0 ? (
+              <p className="col-span-full rounded-lg border border-zinc-200 bg-zinc-100 px-6 py-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                No content. Set <code className="rounded bg-zinc-200 px-1 py-0.5 font-mono dark:bg-zinc-800">AEM_PUBLISH_URL</code> to load from AEM.
+              </p>
+            ) : (
+              adventures.slice(0, 4).map((adventure) => (
               <AdventureCard
                 key={adventure.slug}
                 slug={adventure.slug}
@@ -89,7 +100,8 @@ export default async function Home() {
                 imageUrl={getImageUrl(adventure.primaryImage) ?? null}
                 aueResource={aueResource(adventure._path)}
               />
-            ))}
+              ))
+            )}
           </div>
         </section>
       </main>

@@ -9,39 +9,26 @@
 
 const CONFIG_NAME = "wknd-shared";
 
-const DEFAULT_PUBLISH_URL = "https://publish-p125048-e1847106.adobeaemcloud.com";
-
-/** True when DEBUG or AEM_DEBUG is enabled (e.g. DEBUG=1 or AEM_DEBUG=true). */
+/** True when DEBUG or AEM_DEBUG is enabled (e.g. DEBUG=1 or AEM_DEBUG=true). Logs each GraphQL query URL server-side. */
 function isDebugEnabled(): boolean {
-  const v =
-    process.env.DEBUG ??
-    process.env.AEM_DEBUG ??
-    process.env.NEXT_PUBLIC_AEM_DEBUG;
+  const v = process.env.DEBUG ?? process.env.AEM_DEBUG;
   return v === "true" || v === "1" || v === "yes";
 }
 
 /** True when server is running in preview mode (e.g. for editors to see draft content from Author). */
 function isPreviewMode(): boolean {
-  const v = process.env.AEM_PREVIEW_MODE ?? process.env.NEXT_PUBLIC_AEM_PREVIEW_MODE;
+  const v = process.env.AEM_PREVIEW_MODE;
   return v === "true" || v === "1";
 }
 
 function getAuthorUrl(): string {
-  const url = process.env.AEM_AUTHOR_URL ?? process.env.NEXT_PUBLIC_AEM_AUTHOR_URL;
-  if (!url) {
-    throw new Error(
-      "AEM Author URL is not set. Set AEM_AUTHOR_URL or NEXT_PUBLIC_AEM_AUTHOR_URL (required when AEM_PREVIEW_MODE is true)."
-    );
-  }
-  return url.replace(/\/$/, "");
+  const url = process.env.AEM_AUTHOR_URL?.trim() ?? "";
+  return url ? url.replace(/\/$/, "") : "";
 }
 
 function getPublishUrl(): string {
-  return (
-    process.env.AEM_PUBLISH_URL ??
-    process.env.NEXT_PUBLIC_AEM_PUBLISH_URL ??
-    DEFAULT_PUBLISH_URL
-  ).replace(/\/$/, "");
+  const url = process.env.AEM_PUBLISH_URL?.trim() ?? "";
+  return url ? url.replace(/\/$/, "") : "";
 }
 
 /**
@@ -82,11 +69,16 @@ export interface AemGraphQLResponse<T> {
 /**
  * Execute a persisted query by name with optional variables.
  * Uses GET so responses can be cached at Dispatcher/CDN.
+ * If AEM is not configured (no AEM_PUBLISH_URL in production), returns empty data without fetching.
  */
 export async function executePersistedQuery<T>(
   queryName: string,
   variables?: Record<string, string | number | boolean>
 ): Promise<AemGraphQLResponse<T>> {
+  const base = getGraphqlBaseUrl();
+  if (!base) {
+    return {};
+  }
   const url = buildExecuteUrl(queryName, variables);
   if (isDebugEnabled()) {
     console.log("[AEM GraphQL]", queryName, url);
@@ -121,7 +113,12 @@ export function getAemAuthorUrl(): string {
   return getAuthorUrl();
 }
 
-/** Publish base URL (GraphQL in production, and all image/asset URLs). Safe to use in client. */
+/** Publish base URL (GraphQL in production, and all image/asset URLs). Empty if AEM_PUBLISH_URL is not set. */
 export function getAemPublishUrl(): string {
   return getPublishUrl();
+}
+
+/** True when AEM Publish is configured (AEM_PUBLISH_URL set). */
+export function isAemConfigured(): boolean {
+  return getPublishUrl().length > 0;
 }

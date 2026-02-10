@@ -6,7 +6,7 @@ import Header from "./components/Header";
 
 /** AEM URL for Universal Editor connection (e.g. https://localhost:8443 or your AEM Author URL). */
 const AEM_UE_CONNECTION =
-  process.env.NEXT_PUBLIC_AEM_UE_CONNECTION ?? "https://localhost:8443";
+  process.env.AEM_UE_CONNECTION ?? "https://localhost:8443";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -198,13 +198,14 @@ export const getBlogPostPageData = cache(async (slug: string): Promise<{
   return { article, relatedArticles };
 });
 
-/** Image URL for display. Prefers _dynamicUrl; falls back to _path. Base from AEM Publish URL or env override. */
+/** Image URL for display. Prefers _dynamicUrl; falls back to _path. Base from AEM Publish URL or env override. Returns null if no base URL is configured. */
 export function getImageUrl(
   image: WkndImage | string | null | undefined
 ): string | null {
   if (!image) return null;
   const base =
-    process.env.NEXT_PUBLIC_IMAGE_BASE_URL ?? getAemPublishUrl();
+    process.env.IMAGE_BASE_URL?.trim() ?? getAemPublishUrl();
+  if (!base) return null;
   const path =
     typeof image === "string"
       ? image
@@ -218,5 +219,6 @@ export function getImageUrl(
 export function isWkndImageUrl(url: string | null | undefined): boolean {
   if (!url) return false;
   const publish = getAemPublishUrl();
-  return url.startsWith(publish) || url.includes("adobeaemcloud.com");
+  if (publish && url.startsWith(publish)) return true;
+  return url.includes("adobeaemcloud.com");
 }

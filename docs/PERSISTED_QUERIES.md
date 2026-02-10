@@ -12,9 +12,9 @@ The data layer returns empty lists when requests fail so the app still builds an
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `AEM_PUBLISH_URL` or `NEXT_PUBLIC_AEM_PUBLISH_URL` | No (has default) | Base URL of the AEM **Publish** instance. Used for **GraphQL in production** and for all image/asset URLs. Defaults to the WKND publish URL if unset. |
-| `AEM_AUTHOR_URL` or `NEXT_PUBLIC_AEM_AUTHOR_URL` | When preview mode is on | Base URL of the AEM **Author** instance. Only used to execute GraphQL when `AEM_PREVIEW_MODE` is `true`. Example: `https://author-p125048-e1847106.adobeaemcloud.com` |
-| `AEM_PREVIEW_MODE` or `NEXT_PUBLIC_AEM_PREVIEW_MODE` | No | Set to `true` or `1` to use Author for GraphQL (preview/draft content). Omit or `false` for production (Publish). |
+| `AEM_PUBLISH_URL` | No | Base URL of the AEM **Publish** instance. Used for **GraphQL in production** and for all image/asset URLs. If unset, no requests are made and the app shows fallback text. |
+| `AEM_AUTHOR_URL` | When preview mode is on | Base URL of the AEM **Author** instance. Only used to execute GraphQL when `AEM_PREVIEW_MODE` is `true`. Example: `https://author-p125048-e1847106.adobeaemcloud.com` |
+| `AEM_PREVIEW_MODE` | No | Set to `true` or `1` to use Author for GraphQL (preview/draft content). Omit or `false` for production (Publish). |
 
 Execution URL pattern:
 

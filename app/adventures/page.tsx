@@ -50,13 +50,19 @@ export default async function AdventuresPage() {
       )}
 
       <main className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-6 flex items-center justify-between">
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Showing {adventures.length} adventures
+        {adventures.length === 0 ? (
+          <p className="rounded-lg border border-zinc-200 bg-zinc-100 px-6 py-12 text-center text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+            No content available. Set <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-sm dark:bg-zinc-800">AEM_PUBLISH_URL</code> in your environment to load adventures from AEM.
           </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {adventures.map((adventure) => (
+        ) : (
+          <>
+            <div className="mb-6 flex items-center justify-between">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Showing {adventures.length} adventures
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {adventures.map((adventure) => (
             <AdventureCard
               key={adventure.slug}
               slug={adventure.slug}
@@ -67,8 +73,10 @@ export default async function AdventuresPage() {
               imageUrl={getImageUrl(adventure.primaryImage) ?? null}
               aueResource={aueResource(adventure._path)}
             />
-          ))}
-        </div>
+              ))}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );

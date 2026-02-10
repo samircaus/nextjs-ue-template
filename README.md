@@ -4,8 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Copy `.env.example` to `.env.local` and set:
 
-- **`AEM_PUBLISH_URL`** (or `NEXT_PUBLIC_AEM_PUBLISH_URL`) – AEM Publish base URL. Used to **fetch GraphQL content in production** and for all image/asset URLs. Optional; defaults to the WKND publish instance.
-- **Preview mode:** To use AEM **Author** for draft content, set **`AEM_PREVIEW_MODE=true`** and **`AEM_AUTHOR_URL`** (or `NEXT_PUBLIC_AEM_AUTHOR_URL`), then start the server. Production uses Publish only.
+- **`AEM_PUBLISH_URL`** – AEM Publish base URL for GraphQL and image/asset URLs. If unset, the app shows fallback text instead of AEM content.
+- **Preview mode:** To use AEM **Author** for draft content, set **`AEM_PREVIEW_MODE=true`** and **`AEM_AUTHOR_URL`**, then start the server. Production uses Publish only.
 
 See [docs/PERSISTED_QUERIES.md](docs/PERSISTED_QUERIES.md) for all persisted query names, variables, and response shapes.
 
