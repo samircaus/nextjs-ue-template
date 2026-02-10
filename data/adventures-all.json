@@ -1,0 +1,200 @@
+{
+    "data": {
+      "adventureList": {
+        "items": [
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/bali-surf-camp/bali-surf-camp",
+            "slug": "bali-surf-camp",
+            "title": "Bali Surf Camp",
+            "activity": "Surfing",
+            "price": 5000,
+            "tripLength": "6 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/bali-surf-camp/adobestock-175749320.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--a862cfd4-9c3c-4dcd-8885-736ac6cb94b5/adobestock_175749320.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/beervana-portland/beervana-in-portland",
+            "slug": "beervana-portland",
+            "title": "Beervana in Portland",
+            "activity": "Social",
+            "price": 300,
+            "tripLength": "1 Day",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/beervana-portland/adobestock-279232449.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--e94cb768-ec80-4e87-a38e-bc152c556e66/adobestock_279232449.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/climbing-new-zealand/climbing-new-zealand",
+            "slug": "climbing-new-zealand",
+            "title": "Climbing New Zealand",
+            "activity": "Rock Climbing",
+            "price": 900,
+            "tripLength": "2 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-140634652.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--116b1f8c-553b-452c-8daa-29b5b296c738/adobestock_140634652.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/colorado-rock-climbing/colorado-rock-climbing",
+            "slug": "colorado-rock-climbing",
+            "title": "Overnight Colorado Rock Climbing",
+            "activity": "Rock Climbing",
+            "price": 1000,
+            "tripLength": "3 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/colorado-rock-climbing/adobestock-241578158.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--925fb272-134b-4270-854f-1c926f050729/adobestock_241578158.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/cycling-southern-utah/cycling-southern-utah",
+            "slug": "cycling-southern-utah",
+            "title": "Cycling Southern Utah",
+            "activity": "Cycling",
+            "price": 3000,
+            "tripLength": "5 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/cycling-southern-utah/adobestock-185324648.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--25b8b43e-d2db-4a31-afdb-5d2f9436e6e2/adobestock_185324648.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/cycling-tuscany/cycling-tuscany",
+            "slug": "cycling-tuscany",
+            "title": "Cycling Tuscany",
+            "activity": "Cycling",
+            "price": 4500,
+            "tripLength": "4 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/cycling-tuscany/adobestock-261097343.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--8820ac59-5d93-4294-a073-60334b4ce554/adobestock_261097343.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/downhill-skiing-wyoming/downhill-skiing-wyoming",
+            "slug": "downhill-skiing-wyoming",
+            "title": "Downhill Skiing in Jackson Hole, Wyoming",
+            "activity": "Skiing",
+            "price": 400,
+            "tripLength": "2-3 days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/downhill-skiing-wyoming/adobestock-185234795.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--01e56702-d911-4050-bec8-7b8cdf79b75d/adobestock_185234795.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/gastronomic-marais-tour/gastronomic-marais-tour",
+            "slug": "gastronomic-marais-tour",
+            "title": "Gastronomic Marais Tour",
+            "activity": "Social",
+            "price": 95,
+            "tripLength": "1 Day",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/gastronomic-marais-tour/adobestock-270835979.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--2e19c58e-4161-449b-84e7-879ef9e111d2/adobestock_270835979.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/napa-wine-tasting/napa-wine-tasting",
+            "slug": "napa-wine-tasting",
+            "title": "Napa Wine Tasting",
+            "activity": "Social",
+            "price": 152.59,
+            "tripLength": "1 Day",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/napa-wine-tasting/adobestock-280313729.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--d8e39ed7-1eb5-47e3-80cf-718b897ab3b2/adobestock_280313729.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/riverside-camping-australia/riverside-camping-australia",
+            "slug": "riverside-camping-australia",
+            "title": "Riverside Camping Australia",
+            "activity": "Camping",
+            "price": 500,
+            "tripLength": "3 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/riverside-camping-australia/adobestock-257541512.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--4bb7fa34-135f-4028-9228-1783289924cd/adobestock_257541512.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/ski-touring-mont-blanc",
+            "slug": "ski-touring-mount-blanc",
+            "title": "Ski Touring Mont Blanc",
+            "activity": "Skiing",
+            "price": 2600,
+            "tripLength": "5 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/ski-touring-mont-blanc/adobestock-291339093.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--62a15415-3856-4e4a-8585-726811c695a2/adobestock_291339093.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/surf-camp-in-costa-rica/surf-camp-costa-rica",
+            "slug": "surf-camp-costa-rica",
+            "title": "Surf Camp in Costa Rica",
+            "activity": "Surfing",
+            "price": 3400,
+            "tripLength": "5 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/surf-camp-in-costa-rica/surfing_5.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--6f56dcb7-a825-4955-8906-34e11dca2575/surfing_5.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/tahoe-skiing/tahoe-skiing",
+            "slug": "tahoe-skiing",
+            "title": "Tahoe Skiing",
+            "activity": "Skiing",
+            "price": 1500,
+            "tripLength": "3-4 days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/tahoe-skiing/adobestock-184591344.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--4c2e3d29-0e24-4bda-8e4e-4345a7ac6823/adobestock_184591344.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/west-coast-cycling/west-coast-cycling",
+            "slug": "west-coast-cycling",
+            "title": "West Coast Cycling",
+            "activity": "Cycling",
+            "price": 4500,
+            "tripLength": "5 days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/west-coast-cycling/adobestock-151584995.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--f3481d2c-0be5-463f-a7f1-f3c28d788734/adobestock_151584995.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/whistler-mountain-biking/whistler-mountain-biking",
+            "slug": "whistler-mountain-biking",
+            "title": "Whistler Mountain Biking Adventure",
+            "activity": "Cycling",
+            "price": 1500,
+            "tripLength": "2 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/whistler-mountain-biking/adobestock-122578479.jpeg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--bca2aee3-3984-4dfc-bf6c-6c3d37a98fd2/adobestock_122578479.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          },
+          {
+            "_path": "/content/dam/wknd-shared/en/adventures/yosemite-backpacking/yosemite-backpacking",
+            "slug": "yosemite-backpacking",
+            "title": "Yosemite Backpacking",
+            "activity": "Camping",
+            "price": 1500,
+            "tripLength": "5 Days",
+            "primaryImage": {
+              "_path": "/content/dam/wknd-shared/en/adventures/yosemite-backpacking/adobestock-196967522.jpg",
+              "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--2c1a57f5-1bff-4155-b2ea-aa9a9fdbd6ce/adobestock_196967522.jpg?width=1200&quality=80&preferwebp=true"
+            }
+          }
+        ]
+      }
+    }
+  }

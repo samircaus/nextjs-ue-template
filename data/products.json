@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Deluxe Rubber Duck (Senior Dev Edition)",
+    "description": "Solves bugs you didn't know you had. Comes with tiny glasses and a judgmental stare. Never argues in code reviews.",
+    "price": 49.99,
+    "category": "Debugging",
+    "imageUrl": "/window.svg",
+    "icon": "🦆",
+    "inStock": true,
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "Emergency Coffee IV Drip Kit",
+    "description": "For when drinking coffee isn't fast enough. Medically questionable, legally ambiguous. Pairs well with production deploys on Friday.",
+    "price": 79.99,
+    "category": "Survival",
+    "imageUrl": "/next.svg",
+    "icon": "☕",
+    "inStock": true,
+    "rating": 4.9
+  },
+  {
+    "id": 3,
+    "name": "Stack Overflow Premium Pass",
+    "description": "Skip the passive-aggressive comments! Get answers without being told your question is a duplicate from 2009.",
+    "price": 299.99,
+    "category": "Fantasy",
+    "imageUrl": "/globe.svg",
+    "icon": "💎",
+    "inStock": true,
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "name": "Mechanical Keyboard That's TOO Loud",
+    "description": "Make sure EVERYONE knows you're coding. Cherry MX Earthquake switches. Neighbors will complain. Worth it.",
+    "price": 199.99,
+    "category": "Gear",
+    "imageUrl": "/file.svg",
+    "icon": "⌨️",
+    "inStock": false,
+    "rating": 4.9
+  }
+]

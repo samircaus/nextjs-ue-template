@@ -1,0 +1,149 @@
+{
+    "data": {
+      "articlePaginated": {
+        "edges": [
+          {
+            "cursor": "QWxhc2thbiBBZHZlbnR1cmUKNjhhYjE1Y2ItZWNiMy00YjgyLWFkN2EtZmI4OGMxMzljNmM2",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/alaska-adventure/alaskan-adventures",
+              "title": "Alaskan Adventure",
+              "slug": "alaskan-adventures",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/alaska-adventure/alaskan-grizzly.jpg",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--fe73c1f7-4b3e-4133-bf8a-34628b59e0f6/alaskan_grizzly.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Ian",
+                "lastName": "Provo",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/ian_provo.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--debbfd66-2bfb-4995-8857-ff1ec25d8e6b/ian_provo.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "QWxvaGEgU3Bpcml0cyBpbiBOb3J0aGVybiBOb3J3YXkKYTVmZTk5MzktMmNiNi00YjQ2LTk5NjktYWQwNTY2MGM2NDNl",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/arctic-surfing/aloha-spirits-in-northern-norway",
+              "title": "Aloha Spirits in Northern Norway",
+              "slug": "aloha-spirits-in-northern-norway",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/arctic-surfing/surfer-back-from-the-ocean.jpg",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--6c496df7-b75d-42d8-baa8-f59e9a4a33bd/surfer_back_from_the_ocean.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Jacob",
+                "lastName": "Wester",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/jacob_wester.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--75907301-6400-4bc9-82a0-b8cec18e736c/jacob_wester.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "Rmx5IEZpc2hpbmcgdGhlIEFtYXpvbgpmMDdlM2IyZi1kM2U4LTQ2ZWEtYmU3YS1jMjhhNDA3MTQ1Mjc=",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/fly-fishing-amazon/fly-fishing",
+              "title": "Fly Fishing the Amazon",
+              "slug": "fly-fishing-amazon",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/fly-fishing-amazon/amazon-river-01.jpg",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--667e63f3-d02b-4bcf-8297-6b329d6a6c0f/amazon_river_01.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Jake",
+                "lastName": "Hammer",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/alex-iby-343837.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--c3fcb334-d5b2-42cc-b9da-7d58003c0883/alex_iby_343837.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "U2FuIERpZWdvIFN1cmYgU3BvdHMKOTY5NjFkN2UtMGI4Yi00ZWI1LTg3NjQtYTAwMWU3NTMyY2Jj",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/san-diego-surf-spots/san-diego-surfspots",
+              "title": "San Diego Surf Spots",
+              "slug": "san-diego-surfspots",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/san-diego-surf-spots/beach-walking.jpg",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--309ae5c8-b5fd-4d3d-b5e4-c278b20fdb42/beach_walking.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Justin",
+                "lastName": "Barr",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/justin_barr.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--d7dc3638-699f-4366-af00-193fe33e48bb/justin_barr.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "U2tpIFRvdXJpbmcKY2MwYzFjZjYtNTgwYy00NTMwLTliMDUtZDAwMDQyODI0OGFj",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/skitouring/skitouring",
+              "title": "Ski Touring",
+              "slug": "ski-touring",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/skitouring/skitouring1sjoeberg.jpg",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--55617d5b-351d-4f5f-8fb1-e929a96325e0/skitouring1sjoeberg.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Sofia",
+                "lastName": "Sjöberg",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/ayo-ogunseinde-237739.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--82a3a4dd-370d-4eba-9021-4896e8e81305/ayo_ogunseinde_237739.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "VWx0aW1hdGUgR3VpZGUgdG8gTEEgU2thdGVwYXJrcwpiNWJkYjY2MS1kYWI2LTQ5ZTktYjBjNy04YzVkM2RjNjA0OWE=",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/la-skateparks/ultimate-guide-to-la-skateparks",
+              "title": "Ultimate Guide to LA Skateparks",
+              "slug": "ultimate-guide-to-la-skateparks",
+              "featuredImage": {
+                "_path": "/content/dam/wknd-shared/en/magazine/la-skateparks/article_01_hero.png",
+                "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--2ab2335e-b831-42e1-a96b-daffebd162d4/article_01_hero.png?width=1200&quality=80&preferwebp=true"
+              },
+              "authorFragment": {
+                "firstName": "Stacey",
+                "lastName": "Roswells",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/stacey-roswells.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--69d7a946-a641-4b87-b5ed-d790449808ca/stacey_roswells.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          },
+          {
+            "cursor": "V2VzdGVybiBBdXN0cmFsaWEgYnkgQ2FtcGVyIFZhbgo4NTNlOWY1Zi00NGJmLTRiNWUtOWZjNC1iNWNkNWQzYTI1OGI=",
+            "node": {
+              "_path": "/content/dam/wknd-shared/en/magazine/western-australia/western-australia-by-camper-van",
+              "title": "Western Australia by Camper Van",
+              "slug": "western-australia-by-camper-van",
+              "featuredImage": null,
+              "authorFragment": {
+                "firstName": "Sofia",
+                "lastName": "Sjöberg",
+                "profilePicture": {
+                  "_path": "/content/dam/wknd-shared/en/contributors/ayo-ogunseinde-237739.jpg",
+                  "_dynamicUrl": "/adobe/dynamicmedia/deliver/dm-aid--82a3a4dd-370d-4eba-9021-4896e8e81305/ayo_ogunseinde_237739.png?width=1200&quality=80&preferwebp=true"
+                }
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "endCursor": "V2VzdGVybiBBdXN0cmFsaWEgYnkgQ2FtcGVyIFZhbgo4NTNlOWY1Zi00NGJmLTRiNWUtOWZjNC1iNWNkNWQzYTI1OGI=",
+          "hasNextPage": false
+        }
+      }
+    }
+  }
