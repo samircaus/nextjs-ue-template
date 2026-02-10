@@ -169,7 +169,7 @@ export async function getArticleBySlug(
     const items =
       list?.items ??
       (Array.isArray((list as { list?: unknown[] })?.list)
-        ? (list as { list: WkndArticleWithContent[] }).list
+        ? (list as unknown as { list: WkndArticleWithContent[] }).list
         : []);
     const article = items[0] ?? undefined;
     if (article && !article.main?.html && !article.main?.plaintext && !article.main?.json && process.env.NODE_ENV === "development") {
