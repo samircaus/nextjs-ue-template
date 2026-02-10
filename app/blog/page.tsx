@@ -1,5 +1,6 @@
 import ArticleCard from "../components/ArticleCard";
 import { getArticles, getImageUrl } from "@/lib/data";
+import { aueResource } from "@/lib/universal-editor";
 
 export const metadata = {
   title: "Magazine | WKND",
@@ -35,8 +36,9 @@ export default async function BlogPage() {
               title={article.title}
               slug={article.slug}
               author={`${article.authorFragment.firstName} ${article.authorFragment.lastName}`}
-imageUrl={getImageUrl(article.featuredImage) ?? null}
-                profilePictureUrl={getImageUrl(article.authorFragment.profilePicture) ?? null}
+              imageUrl={getImageUrl(article.featuredImage) ?? null}
+              profilePictureUrl={getImageUrl(article.authorFragment.profilePicture) ?? null}
+              aueResource={aueResource(article._path)}
             />
           ))}
         </div>

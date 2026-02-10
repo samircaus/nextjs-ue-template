@@ -3,11 +3,22 @@
   "main": ".open-next/worker.js",
   "name": "nextjs-ue-template",
   "compatibility_date": "2026-01-28",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
+  "vars": {
+    "AEM_PUBLISH_URL": "",
+    "NEXT_PUBLIC_AEM_PUBLISH_URL": "",
+    "AEM_AUTHOR_URL": "",
+    "NEXT_PUBLIC_AEM_AUTHOR_URL": "",
+    "AEM_PREVIEW_MODE": "",
+    "NEXT_PUBLIC_AEM_PREVIEW_MODE": "",
+    "NEXT_PUBLIC_IMAGE_BASE_URL": "",
+    "NEXT_PUBLIC_AEM_UE_CONNECTION": "",
+    "AEM_DEBUG": "",
+    "NEXT_PUBLIC_AEM_DEBUG": ""
   }
 }

@@ -1,6 +1,7 @@
 import ArticleCard from "./components/ArticleCard";
 import AdventureCard from "./components/AdventureCard";
 import { getArticles, getAdventures, getImageUrl } from "@/lib/data";
+import { aueResource } from "@/lib/universal-editor";
 
 export default async function Home() {
   const [articles, adventures] = await Promise.all([
@@ -52,6 +53,7 @@ export default async function Home() {
                 author={`${article.authorFragment.firstName} ${article.authorFragment.lastName}`}
                 imageUrl={getImageUrl(article.featuredImage) ?? null}
                 profilePictureUrl={getImageUrl(article.authorFragment.profilePicture) ?? null}
+                aueResource={aueResource(article._path)}
               />
             ))}
           </div>
@@ -85,6 +87,7 @@ export default async function Home() {
                 price={adventure.price}
                 tripLength={adventure.tripLength}
                 imageUrl={getImageUrl(adventure.primaryImage) ?? null}
+                aueResource={aueResource(adventure._path)}
               />
             ))}
           </div>

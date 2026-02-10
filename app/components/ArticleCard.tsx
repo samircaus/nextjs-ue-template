@@ -13,6 +13,8 @@ interface ArticleCardProps {
   excerpt?: string | null;
   date?: string | null;
   category?: string | null;
+  /** When set, wraps the card in a UE-instrumented component (for list/edit in Universal Editor). */
+  aueResource?: string | null;
 }
 
 export default function ArticleCard({
@@ -24,6 +26,7 @@ export default function ArticleCard({
   excerpt,
   date,
   category,
+  aueResource,
 }: ArticleCardProps) {
   const formattedDate = date
     ? new Date(date).toLocaleDateString("en-US", {
@@ -34,7 +37,7 @@ export default function ArticleCard({
     : null;
   const imgSrc = imageUrl || PLACEHOLDER_IMAGE;
 
-  return (
+  const content = (
     <article className="group relative flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
       <Link href={`/blog/${slug}`} className="absolute inset-0 z-10">
         <span className="sr-only">Read article: {title}</span>
@@ -103,4 +106,17 @@ export default function ArticleCard({
       </div>
     </article>
   );
+
+  if (aueResource) {
+    return (
+      <div
+        data-aue-resource={aueResource}
+        data-aue-type="component"
+        data-aue-label={title}
+      >
+        {content}
+      </div>
+    );
+  }
+  return content;
 }

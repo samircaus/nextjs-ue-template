@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticles, getBlogPostPageData, getImageUrl, isWkndImageUrl } from "@/lib/data";
 import { aemRichTextJsonToHtml } from "@/lib/render-rich-text";
+import { aueResource } from "@/lib/universal-editor";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -38,9 +39,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     article.authorFragment.profilePicture
   );
 
+  const articleResource = aueResource(article._path);
+
   return (
     <div className="min-h-screen bg-zinc-50 font-sans dark:bg-zinc-950">
-      <article className="bg-white dark:bg-black">
+      <article
+        className="bg-white dark:bg-black"
+        data-aue-resource={articleResource}
+        data-aue-type="reference"
+        data-aue-label={article.title}
+      >
         <div className="mx-auto max-w-4xl px-6 py-16">
           <div className="mb-6">
             <Link
@@ -51,7 +59,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </Link>
           </div>
 
-          <h1 className="mb-8 text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h1
+            className="mb-8 text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50"
+            data-aue-prop="title"
+            data-aue-type="text"
+            data-aue-label="title"
+          >
             {article.title}
           </h1>
 
@@ -85,7 +98,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="relative mb-12 aspect-video w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
+          <div
+            className="relative mb-12 aspect-video w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800"
+            data-aue-prop="featuredImage"
+            data-aue-type="media"
+            data-aue-label="Featured image"
+          >
             <Image
               src={featuredImageUrl}
               alt={article.title}
@@ -100,23 +118,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {(() => {
             const main = article.main;
             const html = main?.html ?? (main?.json != null ? aemRichTextJsonToHtml(main.json) : "");
+            const proseClass =
+              "prose prose-zinc max-w-none dark:prose-invert prose-headings:font-bold prose-h2:text-3xl prose-h2:tracking-tight prose-h3:text-2xl prose-p:text-zinc-600 prose-p:leading-relaxed dark:prose-p:text-zinc-400 prose-a:text-zinc-900 dark:prose-a:text-zinc-50";
+            const ueProps = {
+              "data-aue-prop": "main",
+              "data-aue-type": "richtext",
+              "data-aue-label": "Main content",
+            };
             if (html) {
               return (
                 <div
-                  className="prose prose-zinc max-w-none dark:prose-invert prose-headings:font-bold prose-h2:text-3xl prose-h2:tracking-tight prose-h3:text-2xl prose-p:text-zinc-600 prose-p:leading-relaxed dark:prose-p:text-zinc-400 prose-a:text-zinc-900 dark:prose-a:text-zinc-50"
+                  className={proseClass}
                   dangerouslySetInnerHTML={{ __html: html }}
+                  {...ueProps}
                 />
               );
             }
             if (main?.plaintext) {
               return (
-                <div className="prose prose-zinc max-w-none dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400">
+                <div className={`${proseClass} prose-p:text-zinc-600 dark:prose-p:text-zinc-400`} {...ueProps}>
                   <p className="whitespace-pre-wrap">{main.plaintext}</p>
                 </div>
               );
             }
             return (
-              <p className="text-zinc-600 dark:text-zinc-400">
+              <p className="text-zinc-600 dark:text-zinc-400" {...ueProps}>
                 Content for this article is not available.
               </p>
             );

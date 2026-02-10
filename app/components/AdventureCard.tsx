@@ -13,6 +13,8 @@ interface AdventureCardProps {
   price: number;
   tripLength: string;
   imageUrl: string | null;
+  /** When set, wraps the card in a UE-instrumented component (for list/edit in Universal Editor). */
+  aueResource?: string | null;
 }
 
 export default function AdventureCard({
@@ -22,10 +24,11 @@ export default function AdventureCard({
   price,
   tripLength,
   imageUrl,
+  aueResource,
 }: AdventureCardProps) {
   const imgSrc = imageUrl || PLACEHOLDER_IMAGE;
 
-  return (
+  const content = (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
       <Link href={`/adventures/${slug}`} className="absolute inset-0 z-10">
         <span className="sr-only">View adventure: {title}</span>
@@ -63,4 +66,17 @@ export default function AdventureCard({
       </div>
     </div>
   );
+
+  if (aueResource) {
+    return (
+      <div
+        data-aue-resource={aueResource}
+        data-aue-type="component"
+        data-aue-label={title}
+      >
+        {content}
+      </div>
+    );
+  }
+  return content;
 }

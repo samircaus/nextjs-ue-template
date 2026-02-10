@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
+
+/** AEM URL for Universal Editor connection (e.g. https://localhost:8443 or your AEM Author URL). */
+const AEM_UE_CONNECTION =
+  process.env.NEXT_PUBLIC_AEM_UE_CONNECTION ?? "https://localhost:8443";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +30,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* AEM Universal Editor :: CORE Library – communication layer between app and Universal Editor */}
+        <Script
+          src="https://universal-editor-service.adobe.io/cors.js"
+          strategy="afterInteractive"
+        />
+        {/* AEM Universal Editor :: Connection metadata – content source for editing */}
+        <meta
+          name="urn:adobe:aue:system:aemconnection"
+          content={`aem:${AEM_UE_CONNECTION}`}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

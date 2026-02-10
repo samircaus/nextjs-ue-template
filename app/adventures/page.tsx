@@ -1,5 +1,6 @@
 import AdventureCard from "../components/AdventureCard";
 import { getAdventures, getImageUrl } from "@/lib/data";
+import { aueResource } from "@/lib/universal-editor";
 
 export const metadata = {
   title: "Adventures | WKND",
@@ -64,6 +65,7 @@ export default async function AdventuresPage() {
               price={adventure.price}
               tripLength={adventure.tripLength}
               imageUrl={getImageUrl(adventure.primaryImage) ?? null}
+              aueResource={aueResource(adventure._path)}
             />
           ))}
         </div>

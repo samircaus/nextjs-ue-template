@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAdventures, getAdventurePageData, getImageUrl, isWkndImageUrl } from "@/lib/data";
+import { aueResource } from "@/lib/universal-editor";
 
 interface AdventurePageProps {
   params: Promise<{ slug: string }>;
@@ -33,10 +34,16 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
 
   const imageUrl =
     getImageUrl(adventure.primaryImage) ?? PLACEHOLDER_IMAGE;
+  const adventureResource = aueResource(adventure._path);
 
   return (
     <div className="min-h-screen bg-zinc-50 font-sans dark:bg-zinc-950">
-      <div className="bg-white dark:bg-black">
+      <div
+        className="bg-white dark:bg-black"
+        data-aue-resource={adventureResource}
+        data-aue-type="reference"
+        data-aue-label={adventure.title}
+      >
         <div className="mx-auto max-w-7xl px-6 py-16">
           <Link
             href="/adventures"
@@ -46,7 +53,12 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
           </Link>
 
           <div className="grid gap-12 lg:grid-cols-2">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-800">
+            <div
+              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-800"
+              data-aue-prop="primaryImage"
+              data-aue-type="media"
+              data-aue-label="Primary image"
+            >
               <Image
                 src={imageUrl}
                 alt={adventure.title}
@@ -63,7 +75,12 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
                 {adventure.activity}
               </span>
 
-              <h1 className="mb-4 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              <h1
+                className="mb-4 text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50"
+                data-aue-prop="title"
+                data-aue-type="text"
+                data-aue-label="title"
+              >
                 {adventure.title}
               </h1>
 
@@ -75,11 +92,27 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
                 </span>
               </div>
 
-              <p className="mb-8 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Experience this {adventure.activity.toLowerCase()} adventure over{" "}
-                {adventure.tripLength.toLowerCase()}. Book your spot and get
-                ready for the weekend.
-              </p>
+              <div
+                className="mb-8 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
+                data-aue-prop="description"
+                data-aue-type="richtext"
+                data-aue-label="description"
+              >
+                {adventure.description?.html ? (
+                  <div
+                    className="prose prose-zinc max-w-none dark:prose-invert prose-p:leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: adventure.description.html }}
+                  />
+                ) : adventure.description?.plaintext ? (
+                  <p className="whitespace-pre-wrap">{adventure.description.plaintext}</p>
+                ) : (
+                  <p>
+                    Experience this {adventure.activity.toLowerCase()} adventure over{" "}
+                    {adventure.tripLength.toLowerCase()}. Book your spot and get
+                    ready for the weekend.
+                  </p>
+                )}
+              </div>
 
               <button
                 type="button"
@@ -92,6 +125,11 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
 
           {(() => {
             const itinerary = adventure.itinerary;
+            const itineraryUeProps = {
+              "data-aue-prop": "itinerary",
+              "data-aue-type": "richtext",
+              "data-aue-label": "Itinerary",
+            };
             if (itinerary?.html) {
               return (
                 <div className="mt-16 border-t border-zinc-200 pt-16 dark:border-zinc-800">
@@ -101,6 +139,7 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
                   <div
                     className="prose prose-zinc max-w-none dark:prose-invert prose-headings:font-semibold prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-a:text-zinc-900 dark:prose-a:text-zinc-50"
                     dangerouslySetInnerHTML={{ __html: itinerary.html }}
+                    {...itineraryUeProps}
                   />
                 </div>
               );
@@ -111,7 +150,10 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
                   <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
                     Itinerary
                   </h2>
-                  <div className="prose prose-zinc max-w-none dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400">
+                  <div
+                    className="prose prose-zinc max-w-none dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
+                    {...itineraryUeProps}
+                  >
                     <p className="whitespace-pre-wrap">{itinerary.plaintext}</p>
                   </div>
                 </div>
