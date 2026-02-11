@@ -11,7 +11,8 @@
   // Production: wknd.edgepatterns.dev (replace zone_name if your zone differs).
   "route": {
     "pattern": "wknd.edgepatterns.dev/*",
-    "zone_name": "edgepatterns.dev"
+    "zone_name": "edgepatterns.dev",
+    "custom_domain": true
   },
   // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
   "vars": {
@@ -29,7 +30,8 @@
     "preview": {
       "route": {
         "pattern": "wkndpreview.edgepatterns.dev/*",
-        "zone_name": "edgepatterns.dev"
+        "zone_name": "edgepatterns.dev",
+        "custom_domain": true
       },
       "vars": {
         "AEM_PUBLISH_URL": "https://publish-p125048-e1847106.adobeaemcloud.com",
