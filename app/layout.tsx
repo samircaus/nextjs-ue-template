@@ -18,6 +18,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "WKND - Adventure & Travel Magazine",
   description: "Stories and adventures for the weekend enthusiast. Magazine articles and curated trips.",
