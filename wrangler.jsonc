@@ -10,9 +10,10 @@
   },
   // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
   "vars": {
-    "AEM_PUBLISH_URL": "",
+    "AEM_PUBLISH_URL": "https://publish-p125048-e1847106.adobeaemcloud.com",
     "AEM_AUTHOR_URL": "",
     "AEM_PREVIEW_MODE": "",
-    "AEM_DEBUG": ""
+    "AEM_DEBUG": "",
+    "AEM_UE_CONNECTION": "https://author-p125048-e1847106.adobeaemcloud.com"
   }
 }
