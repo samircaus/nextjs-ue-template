@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "./components/Header";
+import AppHeader from "./components/Header";
 
 /** AEM URL for Universal Editor connection (e.g. https://localhost:8443 or your AEM Author URL). */
 const AEM_UE_CONNECTION =
@@ -43,6 +43,11 @@ export default function RootLayout({
           name="urn:adobe:aue:system:aemconnection"
           content={`aem:${AEM_UE_CONNECTION}`}
         />
+        {/* AEM Universal Editor :: Preview site URL (wkndpreview.edgepatterns.dev) */}
+        <meta
+          name="urn:adobe:aue:config:preview"
+          content="https://wkndpreview.edgepatterns.dev"
+        />
         {/* AEM Universal Editor :: Component definition (Content Fragments) */}
         <script
           type="application/vnd.adobe.aue.component+json"
@@ -57,7 +62,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
+        <AppHeader isPreview={process.env.AEM_USE_PREVIEW_URL === "true"} />
         {children}
       </body>
     </html>

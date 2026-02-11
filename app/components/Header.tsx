@@ -3,8 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+export interface AppHeaderProps {
+  isPreview?: boolean;
+}
+
+export default function AppHeader(props: AppHeaderProps) {
+  const { isPreview = false } = props;
   const pathname = usePathname();
+  const logoLabel = isPreview ? "WKND Preview" : "WKND";
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -29,7 +35,7 @@ export default function Header() {
             W
           </div>
           <span className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            WKND
+            {logoLabel}
           </span>
         </Link>
 
