@@ -14,7 +14,7 @@
     "AEM_PREVIEW_URL": "https://preview-p125048-e1847106.adobeaemcloud.com",
     "AEM_AUTHOR_URL": "",
     "AEM_PREVIEW_MODE": "",
-    "AEM_USE_PREVIEW_URL": "",
+    "AEM_USE_PREVIEW_URL": "true",
     "AEM_DEBUG": "",
     "AEM_UE_CONNECTION": "https://author-p125048-e1847106.adobeaemcloud.com"
   },
