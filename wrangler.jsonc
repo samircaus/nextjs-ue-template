@@ -8,6 +8,11 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  // Production: wknd.edgepatterns.dev (replace zone_name if your zone differs).
+  "route": {
+    "pattern": "wknd.edgepatterns.dev/*",
+    "zone_name": "edgepatterns.dev"
+  },
   // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
   "vars": {
     "AEM_PUBLISH_URL": "https://publish-p125048-e1847106.adobeaemcloud.com",
@@ -18,9 +23,13 @@
     "AEM_DEBUG": "",
     "AEM_UE_CONNECTION": "https://author-p125048-e1847106.adobeaemcloud.com"
   },
-  // Deploy with --env preview (e.g. from a preview branch) to use AEM Preview tier instead of Publish.
+  // Deploy with --env preview for wkndpreview.edgepatterns.dev (AEM Preview tier, "WKND Preview" logo).
   "env": {
     "preview": {
+      "route": {
+        "pattern": "wkndpreview.edgepatterns.dev/*",
+        "zone_name": "edgepatterns.dev"
+      },
       "vars": {
         "AEM_USE_PREVIEW_URL": "true"
       }

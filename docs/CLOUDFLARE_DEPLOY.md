@@ -39,11 +39,11 @@ In [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) →
    `npx opennextjs-cloudflare upload`  
    **Important:** The default is `npx wrangler versions upload`, which causes the "worker.js was not found" error. You must change this to the OpenNext command so non-main branches also use the OpenNext build output.
 
-4. **Preview environment** (AEM Preview tier, separate domain):  
-   Use two deployments by **environment**, not by branch:  
-   - **Production:** `npx opennextjs-cloudflare deploy` → e.g. **wknd.edgepatterns.dev** (uses AEM Publish).  
-   - **Preview:** `npx opennextjs-cloudflare deploy -- --env preview` → e.g. **wkndpreview.edgepatterns.dev** (uses `AEM_PREVIEW_URL`, logo shows "WKND Preview").  
-   **`AEM_USE_PREVIEW_URL` is set by the deployment:** the `preview` env in `wrangler.jsonc` sets it to `"true"`; you do not need to set it in the Cloudflare dashboard. Configure your routes so production and preview each point to the correct worker/env. The app includes `<meta name="urn:adobe:aue:config:preview" content="https://wkndpreview.edgepatterns.dev" />` for Universal Editor.
+4. **Domains and preview environment:**  
+   `wrangler.jsonc` defines routes per environment so each deploy goes to the right domain:  
+   - **Production:** `npx opennextjs-cloudflare deploy` → **wknd.edgepatterns.dev** (route in top-level config, uses AEM Publish).  
+   - **Preview:** `npx opennextjs-cloudflare deploy -- --env preview` → **wkndpreview.edgepatterns.dev** (route in `env.preview`, uses `AEM_PREVIEW_URL`, logo "WKND Preview").  
+   Ensure the zone **edgepatterns.dev** exists in your Cloudflare account; change `zone_name` in `wrangler.jsonc` if your zone differs. **`AEM_USE_PREVIEW_URL`** is set by the `preview` env in `wrangler.jsonc`; you do not set it in the dashboard. The app includes `<meta name="urn:adobe:aue:config:preview" content="https://wkndpreview.edgepatterns.dev" />` for Universal Editor.
 
 ### If you still see "worker.js was not found"
 
