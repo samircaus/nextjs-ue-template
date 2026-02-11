@@ -2,9 +2,9 @@
  * AEM GraphQL Persisted Query client.
  * Uses GET requests to execute persisted queries with optional variables.
  *
- * - Production: GraphQL is executed against AEM **Publish** (AEM_PUBLISH_URL).
- * - Preview mode: GraphQL is executed against AEM **Author** (AEM_AUTHOR_URL) for draft content.
- * - Asset URLs always use AEM **Publish**.
+ * - Production (default): GraphQL and assets use AEM **Publish** (AEM_PUBLISH_URL).
+ * - Cloudflare --env preview: GraphQL and assets use AEM **Preview** tier (AEM_PREVIEW_URL).
+ * - Preview mode (AEM_PREVIEW_MODE): GraphQL uses AEM **Author** (AEM_AUTHOR_URL) for draft content.
  */
 
 const CONFIG_NAME = "wknd-shared";
@@ -31,11 +31,26 @@ function getPublishUrl(): string {
   return url ? url.replace(/\/$/, "") : "";
 }
 
+function getPreviewUrl(): string {
+  const url = process.env.AEM_PREVIEW_URL?.trim() ?? "";
+  return url ? url.replace(/\/$/, "") : "";
+}
+
+/** True when deployment should use AEM Preview tier (e.g. Cloudflare --env preview). */
+function usePreviewUrl(): boolean {
+  const v = process.env.AEM_USE_PREVIEW_URL;
+  return v === "true" || v === "1";
+}
+
 /**
  * Base URL used to execute GraphQL persisted queries.
- * Production: Publish. Preview mode: Author.
+ * Cloudflare preview env: AEM Preview tier. Preview mode: Author. Default: Publish.
  */
 function getGraphqlBaseUrl(): string {
+  if (usePreviewUrl()) {
+    const preview = getPreviewUrl();
+    if (preview) return preview;
+  }
   if (isPreviewMode()) {
     return getAuthorUrl();
   }
@@ -113,12 +128,16 @@ export function getAemAuthorUrl(): string {
   return getAuthorUrl();
 }
 
-/** Publish base URL (GraphQL in production, and all image/asset URLs). Empty if AEM_PUBLISH_URL is not set. */
+/** Publish (or Preview when AEM_USE_PREVIEW_URL) base URL for image/asset URLs and fallback. */
 export function getAemPublishUrl(): string {
+  if (usePreviewUrl()) {
+    const preview = getPreviewUrl();
+    if (preview) return preview;
+  }
   return getPublishUrl();
 }
 
-/** True when AEM Publish is configured (AEM_PUBLISH_URL set). */
+/** True when AEM is configured (Publish or Preview URL set). */
 export function isAemConfigured(): boolean {
-  return getPublishUrl().length > 0;
+  return getGraphqlBaseUrl().length > 0;
 }

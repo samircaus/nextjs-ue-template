@@ -1,20 +1,23 @@
 import type { NextConfig } from "next";
 
 function getAemImageRemotePatterns() {
-  const url = process.env.AEM_PUBLISH_URL?.trim();
-  if (!url) return [];
-  try {
-    const hostname = new URL(url).hostname;
-    return [
-      {
-        protocol: "https" as const,
-        hostname,
+  const urls = [
+    process.env.AEM_PUBLISH_URL?.trim(),
+    process.env.AEM_PREVIEW_URL?.trim(),
+  ].filter(Boolean) as string[];
+  const patterns: { protocol: "https"; hostname: string; pathname: string }[] = [];
+  for (const url of urls) {
+    try {
+      patterns.push({
+        protocol: "https",
+        hostname: new URL(url).hostname,
         pathname: "/**",
-      },
-    ];
-  } catch {
-    return [];
+      });
+    } catch {
+      // skip invalid URL
+    }
   }
+  return patterns;
 }
 
 const nextConfig: NextConfig = {

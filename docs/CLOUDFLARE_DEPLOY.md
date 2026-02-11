@@ -39,6 +39,11 @@ In [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) →
    `npx opennextjs-cloudflare upload`  
    **Important:** The default is `npx wrangler versions upload`, which causes the "worker.js was not found" error. You must change this to the OpenNext command so non-main branches also use the OpenNext build output.
 
+4. **Preview-tier branch** (deploy with AEM **Preview** URL instead of Publish):  
+   Use the `preview` env so the worker uses `AEM_PREVIEW_URL` for GraphQL and assets. For example, from a branch named `preview`:  
+   `npx opennextjs-cloudflare deploy -- --env preview`  
+   In Workers Builds you can set a separate **Production branch** for preview (e.g. `preview`) and use the deploy command above, or run this in CI for the preview branch.
+
 ### If you still see "worker.js was not found"
 
 - **Building from a branch other than `main`?** Change **Non-production branch deploy command** (see step 3 above). That’s the command that runs for non-production branches; its default is `npx wrangler versions upload`.
@@ -53,7 +58,7 @@ In [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) →
 | **Build** (Next/OpenNext build, SSG, `NEXT_PUBLIC_*` inlining) | [Workers Builds → Build variables and secrets](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-variables-and-secrets) |
 | **Runtime** (Worker at request time) | [Workers → Settings → Variables and Secrets](https://developers.cloudflare.com/workers/configuration/environment-variables/) |
 
-Set the same names you use in `.env`: `AEM_PUBLISH_URL`, `AEM_AUTHOR_URL`, `AEM_PREVIEW_MODE`, `AEM_UE_CONNECTION`, etc. (see `.env.example` and `wrangler.jsonc`). Use **Secrets** for sensitive values (they cannot be read back from the dashboard). To avoid deployments removing existing vars: `opennextjs-cloudflare deploy -- --keep-vars`. If `AEM_PUBLISH_URL` is not set, the app renders fallback text instead of AEM content.
+Set the same names you use in `.env`: `AEM_PUBLISH_URL`, `AEM_PREVIEW_URL`, `AEM_AUTHOR_URL`, `AEM_PREVIEW_MODE`, `AEM_USE_PREVIEW_URL`, `AEM_UE_CONNECTION`, etc. (see `.env.example` and `wrangler.jsonc`). Use **Secrets** for sensitive values (they cannot be read back from the dashboard). To avoid deployments removing existing vars: `opennextjs-cloudflare deploy -- --keep-vars`. If neither Publish nor Preview URL is set, the app renders fallback text instead of AEM content.
 
 Details: [OpenNext env vars (production)](https://opennext.js.org/cloudflare/howtos/env-vars#production).
 
