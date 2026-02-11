@@ -42,6 +42,7 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
         className="bg-white dark:bg-black"
         data-aue-resource={adventureResource}
         data-aue-type="reference"
+        data-aue-model="adventure"
         data-aue-label={adventure.title}
       >
         <div className="mx-auto max-w-7xl px-6 py-16">

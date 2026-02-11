@@ -41,6 +41,16 @@ export default function RootLayout({
           name="urn:adobe:aue:system:aemconnection"
           content={`aem:${AEM_UE_CONNECTION}`}
         />
+        {/* AEM Universal Editor :: Component definition (Content Fragments) */}
+        <script
+          type="application/vnd.adobe.aue.component+json"
+          src="/component-definition.json"
+        ></script>
+        {/* AEM Universal Editor :: Model definitions for properties panel */}
+        <script
+          type="application/vnd.adobe.aue.model+json"
+          src="/model-definition.json"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

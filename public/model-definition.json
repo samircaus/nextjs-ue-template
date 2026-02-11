@@ -1,0 +1,58 @@
+[
+  {
+    "id": "article",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "featuredImage",
+        "label": "Featured image",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "main",
+        "label": "Main content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "adventure",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "primaryImage",
+        "label": "Primary image",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "itinerary",
+        "label": "Itinerary",
+        "valueType": "string"
+      }
+    ]
+  }
+]

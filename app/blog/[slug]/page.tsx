@@ -47,6 +47,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         className="bg-white dark:bg-black"
         data-aue-resource={articleResource}
         data-aue-type="reference"
+        data-aue-model="article"
         data-aue-label={article.title}
       >
         <div className="mx-auto max-w-4xl px-6 py-16">

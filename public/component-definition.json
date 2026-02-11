@@ -1,0 +1,50 @@
+{
+  "groups": [
+    {
+      "title": "Content Fragments",
+      "id": "content-fragments",
+      "components": [
+        {
+          "title": "Article",
+          "id": "article",
+          "model": "article",
+          "plugins": {
+            "aem": {
+              "cf": {
+                "name": "article",
+                "cfModel": "/conf/wknd/settings/dam/cfm/models/article",
+                "cfFolder": "/content/dam/wknd",
+                "title": "Article",
+                "description": "Magazine article Content Fragment",
+                "template": {
+                  "title": "New Article",
+                  "main": "<p>Article content</p>"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Adventure",
+          "id": "adventure",
+          "model": "adventure",
+          "plugins": {
+            "aem": {
+              "cf": {
+                "name": "adventure",
+                "cfModel": "/conf/wknd/settings/dam/cfm/models/adventure",
+                "cfFolder": "/content/dam/wknd",
+                "title": "Adventure",
+                "description": "Adventure trip Content Fragment",
+                "template": {
+                  "title": "New Adventure",
+                  "description": "<p>Adventure description</p>"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
