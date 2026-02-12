@@ -10,7 +10,7 @@
   },
   // Production: wknd.edgepatterns.dev (replace zone_name if your zone differs).
   "route": {
-    "pattern": "wknd.edgepatterns.dev/*",
+    "pattern": "wknd.edgepatterns.dev",
     "zone_name": "edgepatterns.dev",
     "custom_domain": true
   },
@@ -29,7 +29,7 @@
   "env": {
     "preview": {
       "route": {
-        "pattern": "wkndpreview.edgepatterns.dev/*",
+        "pattern": "wkndpreview.edgepatterns.dev",
         "zone_name": "edgepatterns.dev",
         "custom_domain": true
       },
