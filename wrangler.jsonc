@@ -16,13 +16,13 @@
   },
   // Set values in Cloudflare dashboard (Workers → Settings → Variables) or replace here. Do not commit secrets.
   "vars": {
-    "AEM_PUBLISH_URL": "https://publish-p125048-e1847106.adobeaemcloud.com",
-    "AEM_PREVIEW_URL": "https://preview-p125048-e1847106.adobeaemcloud.com",
+    "AEM_PUBLISH_URL": "https://publish-p55306-e1922504.adobeaemcloud.com",
+    "AEM_PREVIEW_URL": "https://preview-p55306-e1922504.adobeaemcloud.com",
     "AEM_AUTHOR_URL": "",
     "AEM_PREVIEW_MODE": "",
     "AEM_USE_PREVIEW_URL": "",
     "AEM_DEBUG": "",
-    "AEM_UE_CONNECTION": "https://author-p125048-e1847106.adobeaemcloud.com"
+    "AEM_UE_CONNECTION": "https://author-p55306-e1922504.adobeaemcloud.com"
   },
   // Deploy with --env preview for wkndpreview.edgepatterns.dev (AEM Preview tier, "WKND Preview" logo).
   // vars are not inherited by environments, so we repeat them here with AEM_USE_PREVIEW_URL set.
@@ -34,13 +34,13 @@
         "custom_domain": true
       },
       "vars": {
-        "AEM_PUBLISH_URL": "https://publish-p125048-e1847106.adobeaemcloud.com",
-        "AEM_PREVIEW_URL": "https://preview-p125048-e1847106.adobeaemcloud.com",
+        "AEM_PUBLISH_URL": "https://publish-p55306-e1922504.adobeaemcloud.com",
+        "AEM_PREVIEW_URL": "https://preview-p55306-e1922504.adobeaemcloud.com",
         "AEM_AUTHOR_URL": "",
         "AEM_PREVIEW_MODE": "",
         "AEM_USE_PREVIEW_URL": "true",
         "AEM_DEBUG": "",
-        "AEM_UE_CONNECTION": "https://author-p125048-e1847106.adobeaemcloud.com"
+        "AEM_UE_CONNECTION": "https://author-p55306-e1922504.adobeaemcloud.com"
       }
     }
   }
