@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 function getAemImageRemotePatterns() {
   const urls = [
     process.env.AEM_PUBLISH_URL?.trim(),
-    process.env.AEM_PREVIEW_URL?.trim(),
+    process.env.AEM_AUTHOR_URL?.trim(),
   ].filter(Boolean) as string[];
   const patterns: { protocol: "https"; hostname: string; pathname: string }[] = [];
   for (const url of urls) {

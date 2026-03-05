@@ -43,10 +43,10 @@ export default function RootLayout({
           name="urn:adobe:aue:system:aemconnection"
           content={`aem:${AEM_UE_CONNECTION}`}
         />
-        {/* AEM Universal Editor :: Preview site URL (wkndpreview.edgepatterns.dev) */}
+        {/* AEM Universal Editor :: "Preview" button destination – the live Publish deployment */}
         <meta
           name="urn:adobe:aue:config:preview"
-          content="https://wkndpreview.edgepatterns.dev"
+          content="https://wknd.edgepatterns.dev"
         />
         {/* AEM Universal Editor :: Component definition (Content Fragments) */}
         <script
@@ -62,7 +62,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppHeader isPreview={process.env.AEM_USE_PREVIEW_URL === "true"} />
+        <AppHeader />
         {children}
       </body>
     </html>
