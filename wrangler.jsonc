@@ -18,10 +18,10 @@
   // AEM_AUTHOR_URL is only used when AEM_PREVIEW_MODE=true (local dev).
   // In production, UE passes the author URL + login-token as query params at runtime.
   "vars": {
-    "AEM_PUBLISH_URL": "https://publish-p55306-e1922504.adobeaemcloud.com",
-    "AEM_AUTHOR_URL": "https://author-p55306-e1922504.adobeaemcloud.com",
+    "AEM_PUBLISH_URL": "https://publish-p55306-e1922503.adobeaemcloud.com",
+    "AEM_AUTHOR_URL": "https://author-p55306-e1922503.adobeaemcloud.com",
     "AEM_PREVIEW_MODE": "",
     "AEM_DEBUG": "",
-    "AEM_UE_CONNECTION": "https://author-p55306-e1922504.adobeaemcloud.com"
+    "AEM_UE_CONNECTION": "https://author-p55306-e1922503.adobeaemcloud.com"
   }
 }
