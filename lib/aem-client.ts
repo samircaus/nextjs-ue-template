@@ -10,8 +10,6 @@
  *   - Publish – default for all public traffic.
  */
 
-import { headers } from "next/headers";
-
 const CONFIG_NAME = "wknd-shared";
 
 /** True when DEBUG or AEM_DEBUG is enabled (e.g. DEBUG=1 or AEM_DEBUG=true). */
@@ -34,6 +32,9 @@ function getPublishUrl(): string {
  */
 async function getUEContext(): Promise<{ authorUrl: string; token: string } | null> {
   try {
+    // Dynamic import keeps "next/headers" out of the module-level scope so this
+    // file can safely be imported by Client Components without a build error.
+    const { headers } = await import("next/headers");
     const h = await headers();
     const token = h.get("x-aem-login-token") ?? "";
     const authorUrl = h.get("x-aem-author-url") ?? "";
