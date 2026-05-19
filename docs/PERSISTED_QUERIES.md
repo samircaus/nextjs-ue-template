@@ -3,7 +3,7 @@
 This app fetches WKND content from Adobe Experience Manager via **persisted GraphQL queries**.
 
 - **Production:** GraphQL is executed against the AEM **Publish** instance (`AEM_PUBLISH_URL`). No Author URL or auth needed.
-- **Preview mode:** When the server is started with preview mode enabled (`AEM_PREVIEW_MODE=true`), GraphQL is executed against the AEM **Author** instance (`AEM_AUTHOR_URL`) so editors can see draft content.
+- **Universal Editor:** When UE is active it passes the author URL and login token as request headers; the app switches to the AEM **Author** instance automatically for that request.
 - **Assets:** Image and asset URLs always use the **Publish** instance.
 
 The data layer returns empty lists when requests fail so the app still builds and runs; content appears once AEM is reachable.
@@ -13,8 +13,7 @@ The data layer returns empty lists when requests fail so the app still builds an
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `AEM_PUBLISH_URL` | No | Base URL of the AEM **Publish** instance. Used for **GraphQL in production** and for all image/asset URLs. If unset, no requests are made and the app shows fallback text. |
-| `AEM_AUTHOR_URL` | When preview mode is on | Base URL of the AEM **Author** instance. Only used to execute GraphQL when `AEM_PREVIEW_MODE` is `true`. Example: `https://author-p125048-e1847106.adobeaemcloud.com` |
-| `AEM_PREVIEW_MODE` | No | Set to `true` or `1` to use Author for GraphQL (preview/draft content). Omit or `false` for production (Publish). |
+| `AEM_AUTHOR_URL` | No | Base URL of the AEM **Author** instance. Set so the `urn:adobe:aue:system:aemconnection` meta tag points to Author. At runtime, Universal Editor injects the author URL via request headers. |
 
 Execution URL pattern:
 

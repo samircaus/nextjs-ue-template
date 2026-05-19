@@ -51,28 +51,17 @@ async function getUEContext(): Promise<{ authorUrl: string; token: string } | nu
   return null;
 }
 
-/** True when the server was started with AEM_PREVIEW_MODE=true (dev/CI convenience). */
-function isEnvAuthorMode(): boolean {
-  const v = process.env.AEM_PREVIEW_MODE;
-  return v === "true" || v === "1";
-}
-
 /**
  * Resolve the base URL and optional Bearer token for the current request.
  *
  * Priority:
  *  1. UE context (x-aem-login-token / x-aem-author-url headers) → Author + token
- *  2. AEM_PREVIEW_MODE env var → Author (no per-request token)
- *  3. Default → Publish
+ *  2. Default → Publish
  */
 async function resolveContext(): Promise<{ baseUrl: string; token?: string; isAuthor: boolean }> {
   const ue = await getUEContext();
   if (ue) {
     return { baseUrl: ue.authorUrl, token: ue.token || undefined, isAuthor: true };
-  }
-  if (isEnvAuthorMode()) {
-    const url = getAuthorUrl();
-    return { baseUrl: url, isAuthor: true };
   }
   return { baseUrl: getPublishUrl(), isAuthor: false };
 }
