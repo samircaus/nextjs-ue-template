@@ -25,16 +25,6 @@ const nextConfig: NextConfig = {
     remotePatterns: getAemImageRemotePatterns(),
     unoptimized: true, // Cloudflare doesn't run Next's image optimizer
   },
-  async rewrites() {
-    const publishUrl = process.env.AEM_PUBLISH_URL?.trim();
-    if (!publishUrl) return [];
-    return [
-      {
-        source: "/dm/:path*",
-        destination: `${publishUrl}/adobe/dynamicmedia/:path*`,
-      },
-    ];
-  },
   async redirects() {
     return [
       { source: "/shop", destination: "/adventures", permanent: true },
