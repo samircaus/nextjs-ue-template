@@ -35,6 +35,7 @@ export default async function RootLayout({
   const origin = h.get("x-origin") ?? "https://wknd.edgepatterns.dev";
   const pathname = h.get("x-pathname") ?? "/";
   const loginToken = h.get("x-aem-login-token") ?? "";
+  const authorPreview = h.get("x-author-preview") === "1";
   // When inside UE (login-token present), send the preview to author via mode=author-preview + token.
   // Without a token we can't authenticate to author, so just point to the plain publish URL.
   const previewUrl = loginToken
@@ -50,6 +51,14 @@ export default async function RootLayout({
             __html: `(function(){var s=localStorage.getItem('theme');if(s==='dark'||(s===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})()`,
           }}
         />
+        {/* UE iframe: set preview cookie from JS before subresources load (Set-Cookie alone is blocked/partitioned late). */}
+        {authorPreview ? (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `document.cookie="aem-author-preview=1;path=/;max-age=28800;SameSite=None;Secure;Partitioned"`,
+            }}
+          />
+        ) : null}
         {/* AEM Universal Editor :: CORE Library – communication layer between app and Universal Editor */}
         <Script
           src="https://universal-editor-service.adobe.io/cors.js"

@@ -32,9 +32,10 @@ export async function GET(
   const dmPath = `/adobe/dynamicmedia/${path.join("/")}`;
   const destUrl = new URL(dmPath, baseUrl);
 
-  // Forward DM preset / format query params; strip login-token if present
+  // Forward DM preset / format query params; strip UE/preview params
   request.nextUrl.searchParams.forEach((value, key) => {
-    if (key !== "login-token") destUrl.searchParams.set(key, value);
+    if (key === "login-token" || key === "mode") return;
+    destUrl.searchParams.set(key, value);
   });
 
   const fetchHeaders: Record<string, string> = {

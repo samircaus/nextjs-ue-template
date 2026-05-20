@@ -25,10 +25,13 @@ export function middleware(request: NextRequest) {
     request.cookies.get("aem-author-url")?.value ??
     null;
   const referer = request.headers.get("referer") ?? "";
+  const isUeReferer =
+    referer.startsWith("https://experience.adobe.com") ||
+    referer.includes("mode=author-preview");
   const authorPreview =
     searchParams.get("mode") === "author-preview" ||
     request.cookies.get("aem-author-preview")?.value === "1" ||
-    referer.startsWith("https://experience.adobe.com");
+    isUeReferer;
 
   const { origin } = request.nextUrl;
 
@@ -43,8 +46,17 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next({ request: { headers: requestHeaders } });
 
-  // Persist author context in session cookies so browser-initiated requests (images) inherit it.
-  const cookieOpts = { httpOnly: true, sameSite: "lax" as const, path: "/" };
+  // Persist author context in session cookies so browser-initiated requests (images, RSC) inherit it.
+  // SameSite=None + Secure + Partitioned (CHIPS) are required when the site runs inside the UE iframe
+  // on experience.adobe.com — Lax cookies are not sent/stored in that third-party context.
+  const cookieOpts = {
+    httpOnly: true,
+    sameSite: "none" as const,
+    secure: true,
+    partitioned: true,
+    path: "/",
+    maxAge: 60 * 60 * 8,
+  };
   if (loginToken && searchParams.get("login-token")) {
     response.cookies.set("aem-login-token", loginToken, cookieOpts);
   }
