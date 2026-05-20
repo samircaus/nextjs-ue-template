@@ -16,11 +16,14 @@ export function middleware(request: NextRequest) {
   const { searchParams, pathname } = request.nextUrl;
   const loginToken = searchParams.get("login-token");
   const authorUrl = searchParams.get("author");
-  const authorPreview = searchParams.get("mode") === "author-preview";
+  const referer = request.headers.get("referer") ?? "";
+  const authorPreview =
+    searchParams.get("mode") === "author-preview" ||
+    referer.startsWith("https://experience.adobe.com");
 
   const { origin } = request.nextUrl;
 
-  console.log("[middleware]", pathname, "| login-token:", loginToken ? "present" : "missing", "| author:", authorUrl || "none");
+  console.log("[middleware]", pathname, "| login-token:", loginToken ? "present" : "missing", "| author:", authorUrl || "none", "| authorPreview:", authorPreview, "| referer:", referer || "none");
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-origin", origin);

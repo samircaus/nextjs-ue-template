@@ -62,7 +62,8 @@ async function getUEContext(): Promise<{ authorUrl: string; token: string } | nu
 async function resolveContext(): Promise<{ baseUrl: string; token?: string; isAuthor: boolean }> {
   const ue = await getUEContext();
   if (ue) {
-    return { baseUrl: ue.authorUrl, token: ue.token || undefined, isAuthor: true };
+    const token = ue.token || process.env.AEM_AUTHOR_TOKEN?.trim() || undefined;
+    return { baseUrl: ue.authorUrl, token, isAuthor: true };
   }
   return { baseUrl: getPublishUrl(), isAuthor: false };
 }

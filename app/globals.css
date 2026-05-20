@@ -86,9 +86,14 @@ html.adobe-ue-preview body {
 }
 
 html.adobe-ue-edit main,
-html.adobe-ue-edit #__next,
-html.adobe-ue-preview main,
-html.adobe-ue-preview #__next {
+html.adobe-ue-preview main {
   height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Every page shell uses min-h-screen (min-height: 100vh).
+ * Inside a UE iframe, 100vh = iframe height = content height → growth loop. */
+html.adobe-ue-edit .min-h-screen,
+html.adobe-ue-preview .min-h-screen {
   min-height: 0 !important;
 }
