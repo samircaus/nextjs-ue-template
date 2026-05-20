@@ -10,6 +10,8 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 export function proxy(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const loginToken = searchParams.get("login-token");
