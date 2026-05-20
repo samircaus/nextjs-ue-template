@@ -39,7 +39,7 @@ export default async function RootLayout({
   // Without a token we can't authenticate to author, so just point to the plain publish URL.
   const previewUrl = loginToken
     ? `${origin}${pathname}?mode=author-preview&login-token=${loginToken}`
-    : `${origin}${pathname}`;
+    : `${origin}${pathname}?mode=author-preview`;
 
   return (
     <html lang="en" suppressHydrationWarning>

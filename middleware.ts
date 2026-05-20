@@ -45,13 +45,15 @@ export function middleware(request: NextRequest) {
 
   // Persist author context in session cookies so browser-initiated requests (images) inherit it.
   const cookieOpts = { httpOnly: true, sameSite: "lax" as const, path: "/" };
-  if (searchParams.get("login-token")) {
-    response.cookies.set("aem-login-token", loginToken!, cookieOpts);
+  if (loginToken && searchParams.get("login-token")) {
+    response.cookies.set("aem-login-token", loginToken, cookieOpts);
   }
-  if (searchParams.get("author")) {
-    response.cookies.set("aem-author-url", authorUrl!, cookieOpts);
+  if (authorUrl && searchParams.get("author")) {
+    response.cookies.set("aem-author-url", authorUrl, cookieOpts);
   }
-  if (searchParams.get("mode") === "author-preview") {
+  // Set cookie whenever authorPreview is true — covers ?mode=author-preview, UE referer, and
+  // any navigation within the iframe where query params are gone but context must persist.
+  if (authorPreview) {
     response.cookies.set("aem-author-preview", "1", cookieOpts);
   }
 
