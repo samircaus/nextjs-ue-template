@@ -6,7 +6,7 @@
  *   - Author  – used when the app runs inside Universal Editor (UE detects this
  *               via x-aem-login-token / x-aem-author-url request headers set by
  *               middleware.ts from UE's ?login-token=…&author=… query params).
- *               Also used when AEM_PREVIEW_MODE=true (local / CI dev convenience).
+ *               Also used when ?mode=author-preview is in the URL (x-author-preview header).
  *   - Publish – default for all public traffic.
  */
 
@@ -38,15 +38,16 @@ async function getUEContext(): Promise<{ authorUrl: string; token: string } | nu
     const h = await headers();
     const token = h.get("x-aem-login-token") ?? "";
     const authorUrl = h.get("x-aem-author-url") ?? "";
-    if (token || authorUrl) {
+    const authorPreview = h.get("x-author-preview") === "1";
+    console.log("[AEM] getUEContext token:", token ? "present" : "missing", "| authorUrl:", authorUrl || "none", "| authorPreview:", authorPreview);
+    if (token || authorUrl || authorPreview) {
       return {
         authorUrl: authorUrl.replace(/\/$/, "") || getAuthorUrl(),
         token,
       };
     }
-  } catch {
-    // headers() is only available inside a React Server Component request.
-    // Outside that context (e.g. during build/static gen) it throws — ignore.
+  } catch (e) {
+    console.log("[AEM] getUEContext headers() threw:", e);
   }
   return null;
 }
@@ -108,11 +109,11 @@ export async function executePersistedQuery<T>(
     return {};
   }
 
-  const rawUrl = buildExecuteUrl(baseUrl, queryName, variables);
-  // Always cache-bust at fetch time — AEM's persisted-query CDN cache (s-maxage=7200)
-  // would otherwise serve stale data to SSR / CF build. We rely on Next.js / no-store
-  // rather than AEM's Fastly cache. Trade-off: every request hits AEM origin.
-  const url = `${rawUrl}${rawUrl.includes("?") ? "&" : "?"}_=${Date.now()}`;
+  const urlObj = new URL(buildExecuteUrl(baseUrl, queryName, variables));
+  // Cache-bust: AEM's persisted-query CDN cache (s-maxage=7200) would otherwise serve stale data.
+  urlObj.searchParams.set("_", String(Date.now()));
+  if (token) urlObj.searchParams.set("login-token", token);
+  const url = urlObj.toString();
 
   if (isDebugEnabled()) {
     console.log("[AEM GraphQL]", isAuthor ? "author" : "publish", queryName, url);

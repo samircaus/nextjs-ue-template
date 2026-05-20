@@ -25,14 +25,31 @@ export const metadata: Metadata = {
   description: "Stories and adventures for the weekend enthusiast. Magazine articles and curated trips.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { headers } = await import("next/headers");
+  const h = await headers();
+  const origin = h.get("x-origin") ?? "https://wknd.edgepatterns.dev";
+  const pathname = h.get("x-pathname") ?? "/";
+  const loginToken = h.get("x-aem-login-token") ?? "";
+  // When inside UE (login-token present), send the preview to author via mode=author-preview + token.
+  // Without a token we can't authenticate to author, so just point to the plain publish URL.
+  const previewUrl = loginToken
+    ? `${origin}${pathname}?mode=author-preview&login-token=${loginToken}`
+    : `${origin}${pathname}`;
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Prevent flash of wrong theme on load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var s=localStorage.getItem('theme');if(s==='dark'||(s===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})()`,
+          }}
+        />
         {/* AEM Universal Editor :: CORE Library – communication layer between app and Universal Editor */}
         <Script
           src="https://universal-editor-service.adobe.io/cors.js"
@@ -43,10 +60,10 @@ export default function RootLayout({
           name="urn:adobe:aue:system:aemconnection"
           content={`aem:${AEM_UE_CONNECTION}`}
         />
-        {/* AEM Universal Editor :: "Preview" button destination – the live Publish deployment */}
+        {/* AEM Universal Editor :: "Preview" button destination – current page on Publish with author-preview mode */}
         <meta
           name="urn:adobe:aue:config:preview"
-          content="https://wknd.edgepatterns.dev"
+          content={previewUrl}
         />
         {/* AEM Universal Editor :: Component definition (Content Fragments) */}
         <script

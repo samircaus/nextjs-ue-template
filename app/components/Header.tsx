@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 export default function AppHeader() {
   const pathname = usePathname();
@@ -50,14 +51,15 @@ export default function AppHeader() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="flex items-center gap-4">
+        {/* CTA + Theme Toggle */}
+        <div className="flex items-center gap-2">
           <Link
             href="/adventures"
             className="hidden rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:block"
           >
             Find Adventures
           </Link>
+          <ThemeToggle />
         </div>
       </nav>
     </header>

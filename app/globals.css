@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,11 +18,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: clip;
 }
 
 /* Prose: spacing for headings and paragraphs */
@@ -65,4 +71,24 @@ body {
 }
 .prose * + h3 {
   margin-top: 1.75em;
+}
+
+/* Universal Editor iframe fixes
+ * UE adds .adobe-ue-edit / .adobe-ue-preview to <html> when the page runs inside its iframe.
+ * height: 100% / 100vh / overflow-y: clip cause the iframe to grow infinitely or clip content.
+ * These overrides are scoped so they have zero effect on the live site.
+ */
+html.adobe-ue-edit body,
+html.adobe-ue-preview body {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow-y: visible !important;
+}
+
+html.adobe-ue-edit main,
+html.adobe-ue-edit #__next,
+html.adobe-ue-preview main,
+html.adobe-ue-preview #__next {
+  height: auto !important;
+  min-height: 0 !important;
 }

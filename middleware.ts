@@ -13,17 +13,21 @@ import { NextRequest, NextResponse } from "next/server";
 export const runtime = "experimental-edge";
 
 export function middleware(request: NextRequest) {
-  const { searchParams } = request.nextUrl;
+  const { searchParams, pathname } = request.nextUrl;
   const loginToken = searchParams.get("login-token");
   const authorUrl = searchParams.get("author");
+  const authorPreview = searchParams.get("mode") === "author-preview";
 
-  if (!loginToken && !authorUrl) {
-    return NextResponse.next();
-  }
+  const { origin } = request.nextUrl;
+
+  console.log("[middleware]", pathname, "| login-token:", loginToken ? "present" : "missing", "| author:", authorUrl || "none");
 
   const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-origin", origin);
+  requestHeaders.set("x-pathname", pathname);
   if (loginToken) requestHeaders.set("x-aem-login-token", loginToken);
   if (authorUrl) requestHeaders.set("x-aem-author-url", authorUrl);
+  if (authorPreview) requestHeaders.set("x-author-preview", "1");
 
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
