@@ -10,7 +10,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const loginToken = searchParams.get("login-token");
   const authorUrl = searchParams.get("author");
