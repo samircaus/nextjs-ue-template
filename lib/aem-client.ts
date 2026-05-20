@@ -108,7 +108,11 @@ export async function executePersistedQuery<T>(
     return {};
   }
 
-  const url = buildExecuteUrl(baseUrl, queryName, variables);
+  const rawUrl = buildExecuteUrl(baseUrl, queryName, variables);
+  // Append a timestamp cache-buster in dev so CDN/Next.js caches never serve stale data.
+  // Remove before shipping — defeats persisted-query caching.
+  const url =
+    process.env.NODE_ENV === "development" ? `${rawUrl}?_=${Date.now()}` : rawUrl;
 
   if (isDebugEnabled()) {
     console.log("[AEM GraphQL]", isAuthor ? "author" : "publish", queryName, url);
@@ -120,11 +124,7 @@ export async function executePersistedQuery<T>(
       Accept: "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
-    // Never cache Author responses (per-user auth, draft content).
-    // In dev, also skip cache so edits are always fresh.
-    ...(isAuthor || process.env.NODE_ENV === "development"
-      ? { cache: "no-store" as RequestCache }
-      : { next: { revalidate: 60 } }),
+    cache: "no-store",
   });
 
   if (!res.ok) {

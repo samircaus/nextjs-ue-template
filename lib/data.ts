@@ -3,7 +3,6 @@
  * Fetches from AEM via persisted GraphQL (Author URL). Image URLs use Publish URL.
  */
 
-import { unstable_cache } from "next/cache";
 import { cache } from "react";
 import {
   executePersistedQuery,
@@ -127,10 +126,7 @@ async function fetchArticlesListImpl(): Promise<WkndArticleListItem[]> {
   }
 }
 
-// Cross-request cache so generateStaticParams and getBlogPostPageData share one fetch (avoids 2x articles-all log).
-const getCachedArticlesList = cache(
-  unstable_cache(fetchArticlesListImpl, ["articles-all"], { revalidate: 60 })
-);
+const getCachedArticlesList = cache(fetchArticlesListImpl);
 
 /** All articles (list, no full body). Returns empty array if AEM is unreachable. */
 export async function getArticles(): Promise<WkndArticleListItem[]> {
