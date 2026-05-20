@@ -198,20 +198,29 @@ export const getBlogPostPageData = cache(async (slug: string): Promise<{
   return { article, relatedArticles };
 });
 
-/** Image URL for display. Prefers _dynamicUrl; falls back to _path. Base from AEM Publish URL or env override. Returns null if no base URL is configured. */
+/** Image URL for display. Prefers _dynamicUrl; falls back to _path. 
+ * Dynamic Media URLs are routed through /dm proxy to avoid cross-origin ORB blocking.
+ * Returns null if no path is available. */
 export function getImageUrl(
   image: WkndImage | string | null | undefined
 ): string | null {
   if (!image) return null;
-  const base =
-    process.env.IMAGE_BASE_URL?.trim() ?? getAemPublishUrl();
-  if (!base) return null;
   const path =
     typeof image === "string"
       ? image
       : (image._dynamicUrl ?? image._path);
   if (!path) return null;
   const normalized = path.startsWith("/") ? path : `/${path}`;
+
+  // Dynamic Media paths -> route through same-origin proxy (see next.config.ts rewrites)
+  if (normalized.startsWith("/adobe/dynamicmedia/")) {
+    return normalized.replace("/adobe/dynamicmedia", "/dm");
+  }
+
+  // Non-DM assets (e.g. regular DAM paths) -> use absolute AEM URL
+  const base =
+    process.env.IMAGE_BASE_URL?.trim() ?? getAemPublishUrl();
+  if (!base) return null;
   return `${base.replace(/\/$/, "")}${normalized}`;
 }
 
