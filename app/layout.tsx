@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import AppHeader from "./components/Header";
+import UniversalEditorRefreshListener from "./components/UniversalEditorRefreshListener";
 
 /** AEM URL for Universal Editor connection (e.g. https://localhost:8443 or your AEM Author URL). */
 const AEM_UE_CONNECTION =
@@ -88,6 +89,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <UniversalEditorRefreshListener />
         <AppHeader />
         {children}
       </body>
