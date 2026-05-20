@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import AdventureCard from "../components/AdventureCard";
 import { getAdventures, getImageUrl } from "@/lib/data";
 import { aueResource } from "@/lib/universal-editor";

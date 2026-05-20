@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import ArticleCard from "./components/ArticleCard";
 import AdventureCard from "./components/AdventureCard";
 import { getArticles, getAdventures, getImageUrl } from "@/lib/data";

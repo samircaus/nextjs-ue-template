@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import ArticleCard from "../components/ArticleCard";
 import { getArticles, getImageUrl } from "@/lib/data";
 import { aueResource } from "@/lib/universal-editor";

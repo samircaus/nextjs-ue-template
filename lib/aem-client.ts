@@ -109,10 +109,10 @@ export async function executePersistedQuery<T>(
   }
 
   const rawUrl = buildExecuteUrl(baseUrl, queryName, variables);
-  // Append a timestamp cache-buster in dev so CDN/Next.js caches never serve stale data.
-  // Remove before shipping — defeats persisted-query caching.
-  const url =
-    process.env.NODE_ENV === "development" ? `${rawUrl}?_=${Date.now()}` : rawUrl;
+  // Always cache-bust at fetch time — AEM's persisted-query CDN cache (s-maxage=7200)
+  // would otherwise serve stale data to SSR / CF build. We rely on Next.js / no-store
+  // rather than AEM's Fastly cache. Trade-off: every request hits AEM origin.
+  const url = `${rawUrl}${rawUrl.includes("?") ? "&" : "?"}_=${Date.now()}`;
 
   if (isDebugEnabled()) {
     console.log("[AEM GraphQL]", isAuthor ? "author" : "publish", queryName, url);

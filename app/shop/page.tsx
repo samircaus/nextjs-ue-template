@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import ProductCard from "../components/ProductCard";
 import productsData from "@data/products.json";
 
