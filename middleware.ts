@@ -10,9 +10,9 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const loginToken = searchParams.get("login-token");
   const authorUrl = searchParams.get("author");
