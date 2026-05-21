@@ -28,7 +28,10 @@ interface AdventureByPathResponse {
 
 /** adventure-by-slug: adventureList filtered by slug (unique), returns full detail. */
 interface AdventureBySlugResponse {
-  adventureList: { items: WkndAdventureDetail[] };
+  adventureList: {
+    items: WkndAdventureDetail[];
+    _references?: WkndAdventureDetail[];
+  };
 }
 
 interface ArticlePaginatedResponse {
@@ -99,20 +102,31 @@ export async function getAdventureBySlug(
   }
 }
 
-/** All data for the adventure page: adventure + related. Cached per request. Uses adventure-by-slug + adventures-all (2 GraphQL calls). */
+/** All data for the adventure page: adventure + related + CF references. Cached per request. */
 export const getAdventurePageData = cache(async (slug: string): Promise<{
   adventure: WkndAdventureDetail;
   related: WkndAdventure[];
+  references: WkndAdventureDetail[];
 } | null> => {
-  const [adventure, list] = await Promise.all([
-    getAdventureBySlug(slug),
-    getCachedAdventuresList(),
-  ]);
+  let references: WkndAdventureDetail[] = [];
+  let adventure: WkndAdventureDetail | undefined;
+  try {
+    const res = await executePersistedQuery<AdventureBySlugResponse>(
+      "adventure-by-slug",
+      { slug }
+    );
+    const list = res.data?.adventureList;
+    adventure = list?.items?.[0];
+    references = list?._references ?? [];
+  } catch (err) {
+    console.error("AEM getAdventurePageData failed:", err);
+  }
+  const allAdventures = await getCachedAdventuresList();
   if (!adventure) return null;
-  const related = list
-    .filter((a) => a.slug !== slug && a.activity === adventure.activity)
+  const related = allAdventures
+    .filter((a) => a.slug !== slug && a.activity === adventure!.activity)
     .slice(0, 3);
-  return { adventure, related };
+  return { adventure, related, references };
 });
 
 async function fetchArticlesListImpl(): Promise<WkndArticleListItem[]> {

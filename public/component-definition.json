@@ -32,13 +32,76 @@
             "aem": {
               "cf": {
                 "name": "adventure",
-                "cfModel": "/conf/wknd/settings/dam/cfm/models/adventure",
-                "cfFolder": "/content/dam/wknd",
+                "cfModel": "/conf/wknd-shared/settings/dam/cfm/models/adventure",
+                "cfFolder": "/content/dam/wknd-shared/en/adventures",
                 "title": "Adventure",
                 "description": "Adventure trip Content Fragment",
                 "template": {
                   "title": "New Adventure",
                   "description": "<p>Adventure description</p>"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Adventure content",
+      "id": "adventure-content",
+      "components": [
+        {
+          "title": "Description",
+          "id": "adventure-description",
+          "model": "adventure",
+          "plugins": {
+            "aem": {
+              "cf": {
+                "name": "adventure",
+                "cfModel": "/conf/wknd-shared/settings/dam/cfm/models/adventure",
+                "cfFolder": "/content/dam/wknd-shared/en/adventures",
+                "title": "Description",
+                "description": "Adventure description (richtext)",
+                "template": {
+                  "description": "<p>Adventure description</p>"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Itinerary",
+          "id": "adventure-itinerary",
+          "model": "adventure",
+          "plugins": {
+            "aem": {
+              "cf": {
+                "name": "adventure",
+                "cfModel": "/conf/wknd-shared/settings/dam/cfm/models/adventure",
+                "cfFolder": "/content/dam/wknd-shared/en/adventures",
+                "title": "Itinerary",
+                "description": "Day-by-day itinerary (richtext)",
+                "template": {
+                  "itinerary": "<p><b>Day 1</b></p><p>Itinerary details</p>"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Gear list",
+          "id": "adventure-gear-list",
+          "model": "adventure",
+          "plugins": {
+            "aem": {
+              "cf": {
+                "name": "adventure",
+                "cfModel": "/conf/wknd-shared/settings/dam/cfm/models/adventure",
+                "cfFolder": "/content/dam/wknd-shared/en/adventures",
+                "title": "Gear list",
+                "description": "Gear list (richtext field on this Adventure CF)",
+                "template": {
+                  "gearList": "<p>Gear and packing list</p>"
                 }
               }
             }

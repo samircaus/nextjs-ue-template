@@ -52,6 +52,42 @@
         "name": "itinerary",
         "label": "Itinerary",
         "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "gearList",
+        "label": "Gear list",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "activity",
+        "label": "Activity",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "tripLength",
+        "label": "Trip length",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "adventureType",
+        "label": "Adventure type",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "difficulty",
+        "label": "Difficulty",
+        "valueType": "string"
+      },
+      {
+        "component": "number",
+        "name": "price",
+        "label": "Price",
+        "valueType": "number"
       }
     ]
   }

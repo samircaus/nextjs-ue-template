@@ -1,0 +1,10 @@
+[
+  {
+    "id": "adventure-content-filter",
+    "components": [
+      "adventure-description",
+      "adventure-itinerary",
+      "adventure-gear-list"
+    ]
+  }
+]

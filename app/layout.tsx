@@ -80,6 +80,11 @@ export default async function RootLayout({
           type="application/vnd.adobe.aue.component+json"
           src="/component-definition.json"
         ></script>
+        {/* AEM Universal Editor :: Filter definitions (allowed components per container) */}
+        <script
+          type="application/vnd.adobe.aue.filter+json"
+          src="/filter-definition.json"
+        ></script>
         {/* AEM Universal Editor :: Model definitions for properties panel */}
         <script
           type="application/vnd.adobe.aue.model+json"

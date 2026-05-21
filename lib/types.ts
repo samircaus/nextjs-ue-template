@@ -42,11 +42,12 @@ export interface WkndAdventure {
   primaryImage: WkndImage | null;
 }
 
-/** Adventure detail from adventure-by-path (description, itinerary, etc.). */
+/** Adventure detail from adventure-by-path / adventure-by-slug. */
 export interface WkndAdventureDetail extends WkndAdventure {
   description?: WkndRichText | null;
   adventureType?: string;
-  groupSize?: string;
+  groupSize?: number | string;
   difficulty?: string;
   itinerary?: WkndRichText | null;
+  gearList?: WkndRichText | null;
 }

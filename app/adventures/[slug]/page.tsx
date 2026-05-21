@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AdventureContent from "@/app/components/AdventureContent";
 import { getAdventures, getAdventurePageData, getImageUrl, isWkndImageUrl } from "@/lib/data";
 import { aueResource } from "@/lib/universal-editor";
 
@@ -32,7 +33,7 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
   const { slug } = await params;
   const data = await getAdventurePageData(slug);
   if (!data) notFound();
-  const { adventure, related } = data;
+  const { adventure, related, references } = data;
 
   const imageUrl =
     getImageUrl(adventure.primaryImage) ?? PLACEHOLDER_IMAGE;
@@ -95,75 +96,22 @@ export default async function AdventurePage({ params }: AdventurePageProps) {
                 </span>
               </div>
 
-              <div
-                className="mb-8 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
-                data-aue-prop="description"
-                data-aue-type="richtext"
-                data-aue-label="description"
-              >
-                {adventure.description?.html ? (
-                  <div
-                    className="prose prose-zinc max-w-none dark:prose-invert prose-p:leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: adventure.description.html }}
-                  />
-                ) : adventure.description?.plaintext ? (
-                  <p className="whitespace-pre-wrap">{adventure.description.plaintext}</p>
-                ) : (
-                  <p>
-                    Experience this {adventure.activity.toLowerCase()} adventure over{" "}
-                    {adventure.tripLength.toLowerCase()}. Book your spot and get
-                    ready for the weekend.
-                  </p>
-                )}
-              </div>
-
               <button
                 type="button"
-                className="w-full rounded-full bg-zinc-900 px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="mt-auto w-full rounded-full bg-zinc-900 px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Book this adventure
               </button>
             </div>
           </div>
 
-          {(() => {
-            const itinerary = adventure.itinerary;
-            const itineraryUeProps = {
-              "data-aue-prop": "itinerary",
-              "data-aue-type": "richtext",
-              "data-aue-label": "Itinerary",
-            };
-            if (itinerary?.html) {
-              return (
-                <div className="mt-16 border-t border-zinc-200 pt-16 dark:border-zinc-800">
-                  <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                    Itinerary
-                  </h2>
-                  <div
-                    className="prose prose-zinc max-w-none dark:prose-invert prose-headings:font-semibold prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-a:text-zinc-900 dark:prose-a:text-zinc-50"
-                    dangerouslySetInnerHTML={{ __html: itinerary.html }}
-                    {...itineraryUeProps}
-                  />
-                </div>
-              );
-            }
-            if (itinerary?.plaintext) {
-              return (
-                <div className="mt-16 border-t border-zinc-200 pt-16 dark:border-zinc-800">
-                  <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                    Itinerary
-                  </h2>
-                  <div
-                    className="prose prose-zinc max-w-none dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400"
-                    {...itineraryUeProps}
-                  >
-                    <p className="whitespace-pre-wrap">{itinerary.plaintext}</p>
-                  </div>
-                </div>
-              );
-            }
-            return null;
-          })()}
+          <div className="mt-16">
+            <AdventureContent
+              adventure={adventure}
+              adventureResource={adventureResource}
+              references={references}
+            />
+          </div>
         </div>
       </div>
 

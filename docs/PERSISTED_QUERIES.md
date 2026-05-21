@@ -219,12 +219,23 @@ query (
       primaryImage { ... on ImageRef { _path _dynamicUrl } }
       description { json plaintext html }
       itinerary { json plaintext html }
+      gearList { json plaintext html }
+    }
+    _references {
+      _path
+      title
+      slug
+      tripLength
+      price
+      primaryImage { ... on ImageRef { _path _dynamicUrl } }
     }
   }
 }
 ```
 
-**Response shape:** `{ data: { adventureList: { items: AdventureDetail[] } } }` (expect one item).
+**Response shape:** `{ data: { adventureList: { items: AdventureDetail[], _references?: AdventureDetail[] } } }` (expect one item). `_references` are fragment references resolved from richtext (e.g. related trips in `description`). The adventure detail page uses them for Universal Editor **Related adventure** blocks.
+
+**Universal Editor:** `app/adventures/[slug]/page.tsx` exposes an **Adventure content** container for richtext fields on the same Adventure CF: `description`, `itinerary`, and `gearList` (all existing CF fields, `data-aue-type="richtext"`). `_references` is **not** stored on the CF model — GraphQL resolves it from fragment links inside `description`; related trips are edited there, not via Add on the container.
 
 ---
 
@@ -460,6 +471,7 @@ query getArticleBySlug($slug: String!, $imageFormat: AssetTransformFormat=PNG, $
 ```
 
 **Response shape:** `{ data: { articleList: { items: ArticleWithContent[] } } }` (expect one item). The app uses `main.html` directly for the article body.
+
 
 ---
 

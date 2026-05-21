@@ -35,7 +35,6 @@ export function middleware(request: NextRequest) {
 
   const { origin } = request.nextUrl;
 
-  console.log("[middleware]", pathname, "| login-token:", loginToken ? "present" : "missing", "| author:", authorUrl || "none", "| authorPreview:", authorPreview, "| referer:", referer || "none");
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-origin", origin);
